@@ -1,13 +1,14 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
 string senha = "";
-
 string base64 = "";
+
 byte[] certificadoPFX = CertificadoPFX.GerarCertificadoPFX(base64, senha);
 File.WriteAllBytes("certificado.pfx", certificadoPFX);
 
 string base64Certificado = CertificadoPFX.GerarBase64DoCertificado("certificado.pfx", senha);
-Console.WriteLine(base64Certificado);
+
+Console.WriteLine($"Deu certo?: {base64 == base64Certificado}");
 
 public class CertificadoPFX
 {
